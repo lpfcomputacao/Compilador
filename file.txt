@@ -1,0 +1,30 @@
+package compilador;
+
+import java.util.function.Consumer;
+
+public abstract class Teste extends Index {
+    static int _testesRodados = 0;
+    char $que;
+    boolean testado;
+    Runnable run;
+
+    public Teste(int i) {
+        super(i);
+        this.testado = false;
+    }
+    
+    private void setTestado(Testavel t) {
+        if (t instanceof Runnable ) {
+            this.testado = true;
+            this.run = null;
+        } else {
+            this.que = 'r';
+            this.run = new Runnable();
+        }
+    }
+    
+    protected void rodar() {
+        while(run.run()) {}
+        return run.result;
+    }
+}
